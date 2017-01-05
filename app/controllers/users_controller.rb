@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include TeamCaptainHelper
   def profile
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def new
