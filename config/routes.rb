@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/' => 'home#index'
+  root to: 'home#index'
 
   get '/users/:id/profile' => 'users#profile'
   get '/users/new' => 'users#new'
@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  # resources :sports It does both
+  resources :sports do
+    resources :teams
+  end
 
 end
