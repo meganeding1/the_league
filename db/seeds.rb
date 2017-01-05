@@ -36,13 +36,23 @@ end
       })
 end
 
-20.times do
-  Game.create({
-    date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
-    team_1: Team.all.sample.name,
-    team_2: Team.all.sample.name
-    })
+10.times do
+  team1 = Team.all.sample
+  team2 = Team.all.sample
+  team1.games.create!({
+      date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+      team_1: team1.name,
+      team_2: team2.name
+      })
 end
+
+# 20.times do
+#   Game.create({
+#     date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+#     team_1: Team.all.sample.name,
+#     team_2: Team.all.sample.name
+#     })
+# end
 
 
 # 5.times do
