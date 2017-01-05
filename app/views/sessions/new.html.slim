@@ -1,11 +1,11 @@
 - if flash[:danger]
   = flash[:danger]
-= form_for(:session, url: login_path) do |f| 
-
-      = f.label :name 
-      = f.text_field :name, class: 'form-control' 
-
-      = f.label :password 
-      = f.password_field :password, class: 'form-control' 
-
-      = f.submit "Log in", class: "btn btn-primary" 
+= form_for(:session, url: login_path) do |f|
+    .add-users
+      = f.label :username
+      = f.text_field :username
+      br
+      = f.label :password
+      = f.password_field :password
+      br
+      = f.submit "Log in"
