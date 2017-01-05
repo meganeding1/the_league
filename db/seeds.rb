@@ -19,12 +19,21 @@ end
     })
 end
 
+# 10.times do
+#   Team.create({
+#     name: Faker::Team.name,
+#     user_id: User.all.sample.id,
+#     sport_id: Sport.all.sample.id
+#     })
+# end
+
 10.times do
-  Team.create({
-    name: Faker::Team.name,
-    user_id: User.all.sample.id,
-    sport_id: Sport.all.sample.id
-    })
+  user = User.all.sample
+  user.teams.create!({
+      name: Faker::Team.name,
+      user_id: user.id,
+      sport_id: Sport.all.sample.id
+      })
 end
 
 20.times do

@@ -2,3 +2,15 @@
 
 h1.user-name
   | Welcome #{@user.username}
+h3.user-email
+  | Email: 
+  = @user.email
+br
+h2.user-teams
+  | Teams:
+h3.user-teams
+  - @user.teams.each do |team|
+    a[href="sports/#{team.sport_id}/team/#{team.id}"]
+      = team.name
+    br
+      
