@@ -1,0 +1,8 @@
+h1 Sport Categories
+
+h4
+  -@sports.each do |sport|
+    ul
+      li =link_to sport.name, sport
+
+p =link_to "Create A New Sport", new_sport_path
