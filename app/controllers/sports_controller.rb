@@ -3,7 +3,6 @@ class SportsController < ApplicationController
     @sports = Sport.all
   end
 
-
   def new
     @sport = Sport.new
   end
@@ -21,7 +20,7 @@ class SportsController < ApplicationController
   end
 
   def edit
-
+    @sport = Sport.find(params[:id])
   end
 
   def show
@@ -29,19 +28,17 @@ class SportsController < ApplicationController
   end
 
   def update
-
-  end
-
-  def destroy
-
+    @sport = Sport.find(params[:id])
+    if @sport.update(sport_params)
+      redirect_to @sport
+    else
+      render "edit"
+    end
   end
 
   private
     def sport_params
       params.require(:sport).permit(:name, :description)
     end
-
-
-
 end
 

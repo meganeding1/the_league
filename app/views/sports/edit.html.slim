@@ -1,0 +1,19 @@
+h1 Edit = @sport.name
+= form_for :sport, url: sport_path(@sport), method: :patch do |f|
+  - if @sport && @sport.errors.any?
+    h2
+      = pluralize(@sport.errors.count, "error")
+      |  prohibited this post from being saved:
+    ul
+      - @sport.errors.full_messages.each do |msg|
+        li
+          = msg
+
+  = f.label :name
+  = f.text_field :name, placeholder: "Name"
+  br
+  = f.label :description
+  = f.text_field :description, placeholder: "Description"
+  br
+  = f.submit
+= link_to 'Back', sports_path
