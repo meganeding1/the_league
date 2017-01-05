@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # resources :sports It does both
 
   resources :sports do
-    resources :teams, except: [:show]
+    resources :teams, except: [:show, :destroy, :index]
   end
-  resources :teams, only: [:show]
+  resources :teams, only: [:show, :destroy]
 end
