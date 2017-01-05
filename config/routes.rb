@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # resources :sports It does both
-  resources :sports do
-    resources :teams
-  end
 
+  resources :sports do
+    resources :teams, except: [:show, :destroy, :index]
+  end
+  resources :teams, only: [:show, :destroy]
 end

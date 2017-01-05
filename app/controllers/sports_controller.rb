@@ -8,8 +8,6 @@ class SportsController < ApplicationController
   end
 
   def create
-    p sport_params
-    p "*"*100
     @sport = Sport.new(sport_params)
 
     if @sport.save
@@ -24,6 +22,7 @@ class SportsController < ApplicationController
   end
 
   def show
+    @teams = Team.all
     @sport = Sport.find(params[:id])
   end
 
