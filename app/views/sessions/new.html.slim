@@ -1,11 +1,9 @@
 - if flash[:danger]
   = flash[:danger]
-= form_for(:session, url: login_path) do |f|
+= bootstrap_form_for(:session, url: login_path) do |f|
     .add-users
-      = f.label :username
       = f.text_field :username
       br
-      = f.label :password
       = f.password_field :password
       br
       = f.submit "Log in"
