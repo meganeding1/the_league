@@ -1,12 +1,12 @@
 class GamesController < ApplicationController
   def index
-    @teams = Team.find(params[:team_id])
+    @team = Team.find(params[:team_id])
     @games = @team.games
   end
 
   def new
     @team = Team.find(params[:team_id])
-    @game = Game.new
+    @game = @team.games.new
   end
 
   def create
@@ -22,11 +22,13 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @date = @game.date
+    @location = @game.location
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:date, :team_1, :team_2)
+    params.require(:game).permit(:date,:location, :team_1, :team_2)
   end
 end
