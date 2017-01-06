@@ -40,6 +40,7 @@ end
   team1 = Team.all.sample
   team2 = Team.all.sample
   team1.games.create!({
+      location: "Bruh Bread Bree Town",
       date: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
       team_1: team1.name,
       team_2: team2.name
