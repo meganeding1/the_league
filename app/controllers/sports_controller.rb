@@ -22,8 +22,8 @@ class SportsController < ApplicationController
   end
 
   def show
-    @teams = Team.all
     @sport = Sport.find(params[:id])
+    @teams = @sport.teams
   end
 
   def update
@@ -40,4 +40,3 @@ class SportsController < ApplicationController
       params.require(:sport).permit(:name, :description)
     end
 end
-

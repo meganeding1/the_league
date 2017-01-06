@@ -17,5 +17,10 @@ Rails.application.routes.draw do
     resources :games
   end
 
+  resources :teams do
+    resources :games
+  end
+
   resources :teams, only: [:show, :destroy, :edit, :update]
+
 end
