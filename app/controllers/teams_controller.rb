@@ -25,11 +25,7 @@ class TeamsController < ApplicationController
   end
 
   def update
-    p params
-    p "80085"*100
-
     @team = Team.find(params[:id])
-
     @team.users.each do |user|
       if user.username != params[:team][:team_captain][:username]
         flash[:alert] = 'User not on team!'
@@ -48,6 +44,15 @@ class TeamsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    Team.find(params[:id]).destroy
+    flash[:success] = "Team Deleted"
+    redirect_to "/"
+
+
+  end
+
 
   # private
   #   def team_params

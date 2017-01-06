@@ -1,4 +1,7 @@
 h1 Edit #{@team.name}
+
+- if flash[:alert]
+  = flash[:alert]
 = form_for :team, url: team_path(@team), method: :patch do |f|
   - if @team && @team.errors.any?
     h2
