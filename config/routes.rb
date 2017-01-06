@@ -13,10 +13,9 @@ Rails.application.routes.draw do
   # resources :sports It does both
 
   resources :sports do
-    resources :teams, except: [:show, :destroy, :index]
-
+    resources :teams, only: [:create, :new]
     resources :games
-
   end
-  resources :teams, only: [:show, :destroy]
+
+  resources :teams, only: [:show, :destroy, :edit, :update]
 end
