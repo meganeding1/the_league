@@ -1,16 +1,12 @@
-
-
-
 - if current_user.id == @user.id
   h1.user-name
     | Welcome #{@user.username}
-  h3.user-email
-    | Email:
+  h4.user-email
     = @user.email
   br
   h2.user-teams
-    | Teams:
-  h3.user-teams
+    | Teams
+  h4.user-teams
     - @user.teams.each do |team|
       =link_to team
               = "#{team.name} "
@@ -20,26 +16,30 @@
           ||
           = link_to "  Delete",team_path(team),method: :delete
           br
-      - else
+  br
+  h2.user-games
+    | Games
+    h4
+      - @user.games.each do |game|
+        = game.team_1
+        |&nbsp; vs &nbsp;
+        = game.team_2
         br
-      br
-    
+
 - else
   h1.user-name
     | #{@user.username}
-  h3.user-email
-    | Email:
+  h4.user-email
     = @user.email
   br
-  h4.user-games
-    | Games:
-    - @user.games.each do |game|
-      br
-      = game.team_1
-      b
-      |      VS
-      = game.team_2
-      br
+  h2.user-games
+    | Games
+    h4
+      - @user.games.each do |game|
+        = game.team_1
+        |&nbsp; vs &nbsp;
+        = game.team_2
+        br
 br
 br
 br
