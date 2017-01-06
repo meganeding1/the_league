@@ -16,7 +16,9 @@
               = "#{team.name} "
       ||
       - if team_captain?(current_user, team)
-          = link_to " Edit", edit_team_path(team)
+          = link_to " Edit ", edit_team_path(team)
+          ||
+          = link_to "  Delete",team_path(team),method: :delete
           br
       - else
         br
