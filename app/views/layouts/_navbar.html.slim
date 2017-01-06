@@ -1,18 +1,16 @@
 - if current_user
-   = link_to "Logout", :controller => 'sessions', :action => 'destroy'
-   br
-   br
-   = link_to "Profile", "/users/#{current_user.id}/profile"
-
-   br
-   br
-   = link_to "Sports",  "/sports"
+   span
+      = link_to "Logout  ", :controller => 'sessions', :action => 'destroy'
+   ||
+   = link_to "  Profile  ", "/users/#{current_user.id}/profile"
+   ||
+   = link_to "  Sports",  "/sports"
 - else
-   .user-login
-      button.click-button
-         = link_to "Login", :controller => 'sessions', :action => 'new'
-   .users-new
-      button.click-button
-         = link_to "Create new User",  "/users/new"
-br
-br
+   span
+      .user-login
+         button.click-button
+            = link_to "Login  ", :controller => 'sessions', :action => 'new'
+      ||
+      .users-new
+         button.click-button
+            = link_to "  Create new User",  "/users/new"

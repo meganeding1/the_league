@@ -14,7 +14,7 @@ h1 Edit #{@team.name}
   br
   =f.fields_for :team_captain do |task_form|
     = task_form.label :team_captain
-    = task_form.text_field :username
+    = task_form.text_field :username, placeholder: "Change the team capt"
   br
   = f.submit
 = link_to 'Back', sport_path

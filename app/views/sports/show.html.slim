@@ -6,8 +6,7 @@ span
   = link_to "Back  ", sports_path
   ||
   = link_to "  Edit  ", edit_sport_path
-  ||
-  = link_to "  Games", "/sports/games"
+
 br
 
 h2 Teams
@@ -15,6 +14,5 @@ h2 Teams
   ul
     li =link_to team.name, team
 
-= link_to "Back  ", sports_path
-= link_to "Edit", edit_sport_path
-= link_to "Games", sport_games_path(@sport)
+h2
+  = link_to "  Games", sport_games_path(@sport)

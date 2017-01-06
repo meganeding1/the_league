@@ -16,7 +16,6 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @sport = Sport.find(params[:id])
     @team = Team.find(params[:id])
   end
 
@@ -26,15 +25,27 @@ class TeamsController < ApplicationController
   end
 
   def update
+    p params
+    p "80085"*100
+
     @team = Team.find(params[:id])
-    @user = User.find_by(username: params[:team][:team_captain][:username])
-    if @user == nil
-      @team.errors.add(:team_captain, "Nope.")
-      render "edit"
-    elsif @team.update(name: params[:team][:name], user_id: @user.id)
-      redirect_to @team
-    else
-      render "edit"
+
+    @team.users.each do |user|
+      if user.username != params[:team][:team_captain][:username]
+        flash[:alert] = 'User not on team!'
+
+        render "edit"
+      else
+        @user = User.find_by(username: params[:team][:team_captain][:username])
+        if @user == nil
+          @team.errors.add(:team_captain, "Nope.")
+          render "edit"
+        elsif @team.update(name: params[:team][:name], user_id: @user.id)
+          redirect_to @team
+        else
+          render "edit"
+        end
+      end
     end
   end
 
