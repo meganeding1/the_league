@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :sports do
     resources :teams, except: [:show, :destroy, :index]
+    resources :games
   end
   resources :teams, only: [:show, :destroy]
 end
