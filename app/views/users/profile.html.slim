@@ -1,5 +1,5 @@
 
-= link_to "Home", "/"
+
 
 - if current_user.id == @user.id
   h1.user-name
@@ -13,10 +13,10 @@
   h3.user-teams
     - @user.teams.each do |team|
       =link_to team
-              = team.name
-
+              = "#{team.name} "
+      ||
       - if team_captain?(current_user, team)
-          = link_to :Edit, edit_team_path(team)
+          = link_to " Edit", edit_team_path(team)
           br
       - else
         br
@@ -37,4 +37,8 @@
       |      VS
       = game.team_2
       br
+br
+br
+br
 
+= link_to "Home", "/"
