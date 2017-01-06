@@ -1,14 +1,17 @@
 class TeamsController < ApplicationController
 
   def new
+    @sport = Sport.find(params[:sport_id])
     @team = Team.new
   end
 
   def create
-
-    @team = Team.new(team_params)
+    sport = Sport.find(params[:sport_id])
+    # User becomes team captain but only when you call team.team_captain
+    @team = current_user.teams.new({name: params[:team][:name], user_id: current_user.id, sport_id: sport.id})
 
     if @team.save
+      @team.users.push(current_user)
       redirect_to @team
     else
       render 'new'
@@ -54,9 +57,8 @@ class TeamsController < ApplicationController
   end
 
 
-  # private
-  #   def team_params
-  #     params.require(:team).permit(:name , :user_id)
-  #   end
+  private
+    def team_params
+      params.require(:team).permit(:name , :user_id, :sport_id)
+    end
 end
-

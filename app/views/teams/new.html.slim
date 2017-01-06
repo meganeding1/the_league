@@ -1,0 +1,7 @@
+h1 Create a New Team
+= form_for :team, url: sport_teams_path do |f|
+  = f.label :name
+  = f.text_field :name, placeholder: "Name"
+  br
+  = f.submit
+= link_to 'Back', sport_teams_path
