@@ -2,11 +2,16 @@ h1 = @sport.name
 
 p = @sport.description
 
+span
+  = link_to "Back  ", sports_path
+  ||
+  = link_to "  Edit  ", edit_sport_path
+  ||
+  = link_to "  Games", "/sports/games"
+br
+
 h2 Teams
 - @teams.each do |team|
   ul
     li =link_to team.name, team
 
-= link_to "Back  ", sports_path
-= link_to "Edit", edit_sport_path
-= link_to "Games", "/sports//games"

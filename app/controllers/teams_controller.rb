@@ -16,6 +16,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    @sport = Sport.find(params[:id])
     @team = Team.find(params[:id])
   end
 
@@ -26,16 +27,20 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    if @team.update(team_params)
+    @user = User.find_by(username: params[:team][:team_captain][:username])
+    if @user == nil
+      @team.errors.add(:team_captain, "Nope.")
+      render "edit"
+    elsif @team.update(name: params[:team][:name], user_id: @user.id)
       redirect_to @team
     else
       render "edit"
     end
   end
 
-  private
-    def team_params
-      params.require(:team).permit(:name, :user_id, :sport_id)
-    end
+  # private
+  #   def team_params
+  #     params.require(:team).permit(:name , :user_id)
+  #   end
 end
 

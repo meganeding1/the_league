@@ -5,35 +5,36 @@
   h1.user-name
     | Welcome #{@user.username}
   h3.user-email
-    | Email: 
+    | Email:
     = @user.email
   br
   h2.user-teams
     | Teams:
   h3.user-teams
     - @user.teams.each do |team|
-      a[href="sports/#{team.sport_id}/team/#{team.id}"]
-        = team.name      
+      =link_to team
+              = team.name
+
       - if team_captain?(current_user, team)
-          = link_to " Edit", "sports/#{team.sport_id}/team/#{team.id}/edit"
+          = link_to :Edit, edit_team_path(team)
           br
-      - else 
+      - else
         br
       br
-- else 
+- else
   h1.user-name
     | #{@user.username}
   h3.user-email
-    | Email: 
+    | Email:
     = @user.email
   br
   h4.user-games
     | Games:
     - @user.games.each do |game|
       br
-      = game.team_1 
+      = game.team_1
       b
-      |      VS 
+      |      VS
       = game.team_2
       br
-      
+
