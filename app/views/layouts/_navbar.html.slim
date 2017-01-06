@@ -20,23 +20,20 @@
                | (current)
 - else
    nav.navbar.navbar-default
-         #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav
-               li/
-               = link_to "Login  ", :controller => 'sessions', :action => 'new'
-               span.sr-only
-                  | (current)
-               li/
-               = link_to "  Register",  "/users/new"
-               span.sr-only
-                  | (current)
-               li/
-               = link_to "Home", "/"
-               span.sr-only
-                  | (current)
-
-
-
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+         ul.nav.navbar-nav
+            li/
+            = link_to "Login  ", :controller => 'sessions', :action => 'new'
+            span.sr-only
+               | (current)
+            li/
+            = link_to "  Register",  "/users/new"
+            span.sr-only
+               | (current)
+            li/
+            = link_to "Home", "/"
+            span.sr-only
+               | (current)
 
 
 / - if current_user
