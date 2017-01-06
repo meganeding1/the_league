@@ -1,0 +1,9 @@
+| Games:
+- @games.each do |game|
+  br
+  a[href="/sports/#{@sport.id}/games/#{game.id}"]
+    = game.team_1 
+    b
+    |      VS 
+    = game.team_2
+    br
