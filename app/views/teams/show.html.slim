@@ -2,16 +2,24 @@ h1 = @team.name
 h3 Players
 h4
   -@users.each do |user|
-    ul
+    ul.add-user
       li =link_to user.username, "/users/#{user.id}/profile"
       h2
   | Games:
-  - @games.each do |game|
-      br
-      a[href="/teams/#{@team.id}/games/#{game.id}"]
-        = game.team_1
-        b
-        |      VS
-        = game.team_2
-      br
-  = link_to "Create a Game", new_team_game_path(@team.id)
+  - @games.each do |game|      
+        br
+        a[href="/teams/#{@team.id}/games/#{game.id}"]
+          = game.team_1 
+          b
+          |      VS 
+          = game.team_2
+        br
+  - if current_user == @team.team_captain
+    = link_to "Create a Game",
+    new_team_game_path(@team.id)
+    br
+  - if @team.users.exclude?(current_user)
+    br
+    br
+    .button-add-user-team
+      = link_to "Join", @team, remote: true
