@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :show_teams, only: [:show, :create]
 
   def new
     @sport = Sport.find(params[:sport_id])
@@ -22,11 +23,6 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
-  def show
-    @team = Team.find(params[:id])
-    @users = @team.users
-    @games = @team.games
-  end
 
   def update
     @team = Team.find(params[:id])
@@ -59,7 +55,30 @@ class TeamsController < ApplicationController
 
 
   private
+
+    def show_teams
+      @team = Team.find(params[:id])
+      @users = @team.users
+      @games = @team.games
+
+      # respond_to do |format|
+      #     # format.js { render :file => "/views/teams/new.js.erb"}
+      #     format.js {render 'new'}
+      #     @users << current_user
+      #     format.html { render 'show' }
+      # end
+
+      if request.xhr?
+        @users << current_user
+        render "show"
+      end
+
+
+    end
+
+
     def team_params
       params.require(:team).permit(:name , :user_id, :sport_id)
     end
+
 end
