@@ -1,7 +1,15 @@
 class GamesController < ApplicationController
   def index
+    p params
+    p "*"*88
+
     @team = Team.find(params[:team_id])
+    p @team
+    p "*"*88
+
     @games = @team.games
+    p @games
+    p "*"*88
   end
 
   def new
@@ -21,7 +29,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:team_id])
     @date = @game.date
     @location = @game.location
   end
