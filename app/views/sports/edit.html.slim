@@ -1,5 +1,5 @@
 h1 Edit = @sport.name
-= form_for :sport, url: sport_path(@sport), method: :patch do |f|
+= bootstrap_form_for :sport, url: sport_path(@sport), method: :patch do |f|
   - if @sport && @sport.errors.any?
     h2
       = pluralize(@sport.errors.count, "error")
@@ -9,10 +9,8 @@ h1 Edit = @sport.name
         li
           = msg
 
-  = f.label :name
   = f.text_field :name, placeholder: "Name"
   br
-  = f.label :description
   = f.text_field :description, placeholder: "Description"
   br
   = f.submit

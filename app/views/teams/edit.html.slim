@@ -2,7 +2,7 @@ h1 Edit #{@team.name}
 
 - if flash[:alert]
   = flash[:alert]
-= form_for :team, url: team_path(@team), method: :patch do |f|
+= bootstrap_form_for :team, url: team_path(@team), method: :patch do |f|
   - if @team && @team.errors.any?
     h2
       = pluralize(@team.errors.count, "error")
@@ -12,12 +12,10 @@ h1 Edit #{@team.name}
         li
           = msg
 
-  = f.label :name
   = f.text_field :name, placeholder: "Name"
   br
   =f.fields_for :team_captain do |task_form|
-    = task_form.label :team_captain
-    = task_form.text_field :username, placeholder: "Change the team capt"
+    = task_form.text_field :team_captain, placeholder: "Change the team capt"
   br
   = f.submit
 = link_to 'Back', sport_path

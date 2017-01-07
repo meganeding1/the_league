@@ -1,6 +1,5 @@
 h1 Create a New Team
-= form_for :team, url: sport_teams_path do |f|
-  = f.label :name
+= bootstrap_form_for :team, url: sport_teams_path do |f|
   = f.text_field :name, placeholder: "Name"
   br
   = f.submit
