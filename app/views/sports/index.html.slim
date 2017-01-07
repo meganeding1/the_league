@@ -1,12 +1,12 @@
 - if current_user
 
   h1 Sport Categories
-
+  br
   h4
     -@sports.each do |sport|
       ul
         li =link_to sport.name, sport
-
+  br
   p =link_to "Create A New Sport", new_sport_path
 - else
-  p Please Log in to View Page
+  h5 Please Log in to View Page

@@ -9,9 +9,9 @@ h4
   - @games.each do |game|
       br
       a[href="/teams/#{@team.id}/games/#{game.id}"]
-        = game.team_1 
+        = game.team_1
         b
-        |      VS 
+        |      VS
         = game.team_2
       br
   = link_to "Create a Game", new_team_game_path(@team.id)

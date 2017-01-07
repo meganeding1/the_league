@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bootstrap3-datetimepicker-rails (4.17.43)
+      momentjs-rails (>= 2.8.1)
     bootstrap_form (2.5.3)
     builder (3.2.2)
     byebug (9.0.6)
@@ -80,6 +82,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    momentjs-rails (2.15.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
@@ -164,6 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap3-datetimepicker-rails (~> 4.17.43)
   bootstrap_form
   byebug
   coffee-rails (~> 4.2)
@@ -171,6 +176,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  momentjs-rails (>= 2.9.0)
   pg (~> 0.18)
   puma (~> 3.0)
   rails (~> 5.0.1)
