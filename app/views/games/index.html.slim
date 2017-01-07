@@ -1,9 +1,4 @@
-| Games:
+h2 Games
 - @games.each do |game|
   br
-  a[href="/teams/#{@team.id}/games/#{game.id}"]
-    = game.team_1 
-    b
-    |      VS 
-    = game.team_2
-    br
+  =link_to "#{game.team_1} vs #{game.team_2}", team_game_path(@team, game)

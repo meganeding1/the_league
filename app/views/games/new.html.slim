@@ -1,17 +1,21 @@
 h1 Create a New Game
-= form_for :game, url: team_games_path do |f|
-  = f.label :date
-  | YYY-DD-MM HH:MM:SS 
-  = f.text_field :date, placeholder: "Date"
-  br
-  = f.label :location
-  = f.text_field :location, placeholder: "Location"
-  br
-  = f.label :team_1
-  = f.text_field :team_1, placeholder: "Team 1"
-  br
-  = f.label :team_2
-  = f.text_field :team_2, placeholder: "Team 2"
-  br
-  = f.submit
+.add-games
+  = bootstrap_form_for :game, url: team_games_path do |f|
+    = f.datetime_local_field :date, :class => 'datepicker'
+    / .col-sm-6
+    /   .form-group
+    /     #datetimepicker1.input-group.date
+    /       input.form-control[name="date" type="text"]
+    /       span.input-group-addon
+    /         span.glyphicon.glyphicon-calendar
+    / script[type="text/javascript"]
+    /   |  $(function () { $('#datetimepicker1').datetimepicker(); });
+    br
+    = f.text_field :location
+    br
+    = f.text_field :team_1
+    br
+    = f.text_field :team_2
+    br
+    = f.submit
 = link_to 'Back', team_path(@team)
